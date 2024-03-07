@@ -7,6 +7,7 @@ export default function Following({ data }) {
     <SimpleGrid columns={{ base: 1, sm: 1, md: 4 }} spacing={2}>
       {followingMerchant.map((merchant, index) => (
         <CardMerchant
+          id={merchant.merchantData.id}
           key={merchant.merchantData.id}
           city={merchant.merchantData.kabupaten}
           prov={merchant.merchantData.provinsi}

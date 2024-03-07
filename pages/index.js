@@ -11,7 +11,6 @@ import {
   Button,
 } from "@chakra-ui/react";
 import { getServerSession } from "next-auth";
-import { signIn, signOut } from "next-auth/react";
 import { authOptions } from "./api/auth/[...nextauth]";
 
 const tabTitle = ["Recommended", "Following"];
@@ -73,21 +72,25 @@ export default function Home({
   listFollowingMerchant,
 }) {
   return (
-    <Box pl="20px" pt="20px">
+    <Box px="20px" pt="20px">
       <Tabs colorScheme="purple" variant="soft-rounded">
         <TabList>
           {tabTitle.map((tab, index) => (
-            <Tab key={index + 1}>{tab}</Tab>
+            <Tab key={index}>{tab}</Tab>
           ))}
         </TabList>
         <TabPanels>
-          <TabPanel>
+          <TabPanel
+            display={{ base: "flex", md: "block" }}
+            justifyContent="center"
+          >
             <Recommended data={listRecommendedMerchant} />
           </TabPanel>
-          <TabPanel>
+          <TabPanel
+            display={{ base: "flex", md: "block" }}
+            justifyContent="center"
+          >
             <Following data={listFollowingMerchant} />
-            <Button onClick={() => signIn()}>Login</Button>
-            <Button onClick={() => signOut()}>Logout</Button>
           </TabPanel>
         </TabPanels>
       </Tabs>
